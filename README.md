@@ -28,29 +28,28 @@ USUARIOS REGISTRADOS:
 
 Tabla de users:
 id
-nombre
+name
 email
-biografia
+biograpfy
 foto
 password
-fechaCreacion
-fechaModificacion (solo si se va a llevar a cabo la parte opcional de gestionar perfil de usuario)
+createAt
 
 Tabla de servicios:
 id
-titulo
+title
 descripcion
-fichero
-resolved (true-false) --> o también podéis llamarle status y que sea de tipo Enum con las opciones "pending" o "resolved".
+file
+statusService "pending" o "resolved".
 idUsers
-fechaCreación
+createAt
 
-Tabla de comentarios:
+Tabla de servicesAttended:
 id
 idUser
-idServicio
-texto
-fichero (opcional)
+idService
+text
+fileCompleted
 fechaCreación
 
 # Endpoint Users
@@ -59,7 +58,6 @@ fechaCreación
 -   **POST [/login]** Login de usuario (devuelve token)✅
 -   **GET [/users/:id]** Devuelve información de usuario ✅
 
--   **DELETE[/users/:id]**Borra un usuario
 -   **PUT[/users/:id]**Modifica un usuario
 
 # Endpoints services
@@ -68,13 +66,10 @@ fechaCreación
 -   **POST [/services]** Permite crear un servicio✅
     (necesita llevar titulo, explicacion y fichero)
 
--   **DELETE [/services/:id]** Borra un servicio sólo si eres quien lo creó
-
 # Endpoints usuarios registrados
 
--   **PUT-[/services/:idService/request]**--- solicitar un servicio especifico
-    (le tenemos status enum ,por defecto "pending" ----- cafeteria)
+-   **PUT-[/services/:idService/request]**--- solicitar un servicio especifico✅
     (puede llevar comentario y fichero)
--   **PUT-[/services/:idService/request/resolved]**--finalizar un servicio y marcar como resuelto(el status cambia a resolved)
+-   **PUT-[/services/:idService/request/resolved]**--finalizar un servicio y marcar como resuelto(el status cambia a resolved)✅
 
 Opcional : con el token que pueda gestionar sus datos del perfil
