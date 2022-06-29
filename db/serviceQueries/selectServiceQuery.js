@@ -1,6 +1,7 @@
 const getConnection = require('../getConnection');
+const { generateError } = require('../../helpers');
 
-const allServicesQuery = async () => {
+const selectServiceQuery = async (idService) => {
     let connection;
 
     try {
@@ -11,15 +12,22 @@ const allServicesQuery = async () => {
                 SELECT S.id, S.title, S.description, S.file, S.statusService, S.idUser, S.createdAt
                 FROM services S
                 LEFT JOIN users U 
-                ON S.idUser = U.id
-                ORDER BY S.createdAt DESC
-            `
+                ON S.idUser = U.id 
+                WHERE S.id = ?
+            `,
+            [idService]
         );
 
+        if (services.length === 0) {
+            throw generateError(
+                'No existe servicio con el id seleccionado',
+                409
+            );
+        }
         return services;
     } finally {
         if (connection) connection.release();
     }
 };
 
-module.exports = allServicesQuery;
+module.exports = selectServiceQuery;
