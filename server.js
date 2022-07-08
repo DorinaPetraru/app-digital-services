@@ -17,9 +17,10 @@ app.use(fileUpload());
 
 app.use(cors());
 
-//app.use(express.static('uploads'));
-//app.use(express.static('uploadsCompleted'));
+app.use(express.static('uploads'));
 app.use(express.static('uploadsPhoto'));
+app.use(express.static('uploadsCompleted'));
+
 /**
  * #################
  * ## Middlewares ##
@@ -39,6 +40,7 @@ const {
     loginUser,
     getUser,
     manageProfile,
+    getOwnUser,
 } = require('./controllers/users');
 
 // Registrar un usuario.
@@ -53,6 +55,9 @@ app.get('/users/:idUser', getUser);
 // Gestionar el perfil de un usuario.
 app.put('/users/:idUser', authUser, manageProfile);
 
+// Obtener información sobre el usuario del token.
+app.get('/users', authUser, getOwnUser);
+
 /**
  * ########################
  * ## Endpoints Services ##
@@ -65,6 +70,7 @@ const {
     selectService,
     uploadFileCompleted,
     resolvedService,
+    allComments,
 } = require('./controllers/theServices');
 
 // Obtener una lista de todos los servicios.
@@ -81,6 +87,9 @@ app.post('/services/:idService/filecompleted', authUser, uploadFileCompleted);
 
 // Marcar el servicio finalizado como resuelto.
 app.put('/services/:idService/resolved', authUser, resolvedService);
+
+// Obtener comentarios de un servicio.
+app.get('/services/:idService/comments', authUser, allComments);
 
 /**
  * ######################
