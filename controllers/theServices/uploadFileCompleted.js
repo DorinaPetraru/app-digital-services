@@ -44,7 +44,7 @@ const uploadFileCompleted = async (req, res, next) => {
         }
 
         // Se registra el fichero finalizado.
-        uploadFileCompletedQuery(
+        const idComment = await uploadFileCompletedQuery(
             req.idUser,
             idService,
             text,
@@ -52,7 +52,16 @@ const uploadFileCompleted = async (req, res, next) => {
         );
         res.send({
             status: 'ok',
-            message: 'El fichero completado se ha subido',
+            data: {
+                comment: {
+                    id: idComment,
+                    idUser: req.idUser,
+                    idService,
+                    text,
+                    fileCompleted: fileCompletedName,
+                    createdAt: new Date(),
+                },
+            },
         });
     } catch (err) {
         next(err);
