@@ -14,7 +14,7 @@ const serviceSelectionQuery = async (idService) => {
 
         if (services.length === 0) {
             throw generateError(
-                'No existe servicio con el id seleccionado',
+                'There is no service with the selected id',
                 409
             );
         }

@@ -23,7 +23,7 @@ const manageProfile = async (req, res, next) => {
         // Se asegura que el usuario este modificando su propio perfil.
         if (idUser != idUserToken)
             throw generateError(
-                'Están intentando acceder a información de otro usuario',
+                'They are trying to access another user is information',
                 404
             );
         // Se guarda la foto anterior en la variable "oldPhoto".
@@ -87,7 +87,7 @@ const manageProfile = async (req, res, next) => {
         // Si todo va bien, se envía un mensaje que lo indique.
         res.send({
             status: 'ok',
-            message: `Tu modificación ha sido exitosa`,
+            message: `Your modification has been successful`,
         });
     } catch (error) {
         next(error);

@@ -8,7 +8,7 @@ const newServiceRequest = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'Se ha seleccionado el servicio',
+            message: 'Service has been selected',
         });
     } catch (err) {
         next(err);

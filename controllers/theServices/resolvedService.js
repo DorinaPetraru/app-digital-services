@@ -10,14 +10,14 @@ const resolvedService = async (req, res, next) => {
         if (actualStatus === 'resolved') {
             res.send({
                 status: 'ok',
-                message: 'No es necesario resolver, ya ha sido resuelto',
+                message: 'No need to solve, it is already been solved',
             });
         } else {
             await resolvedServiceQuery(idService);
 
             res.send({
                 status: 'ok',
-                message: 'Servicio resuelto',
+                message: 'Resolved service',
             });
         }
     } catch (err) {

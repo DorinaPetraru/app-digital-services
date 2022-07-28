@@ -57,7 +57,7 @@ const registerUser = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: `El usuario se ha creado con el id ${idUser}`,
+            message: `The user has been created with the id ${idUser}`,
         });
     } catch (error) {
         next(error);

@@ -8,7 +8,7 @@ const loginUser = async (req, res, next) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            throw generateError('Aun faltan campos por rellenar', 400);
+            throw generateError('There are still fields to fill', 400);
         }
 
         // Se obtiene al usuario con el email del body.
@@ -18,7 +18,7 @@ const loginUser = async (req, res, next) => {
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
-            throw generateError('Contraseña incorrecta', 401);
+            throw generateError('Incorrect password', 401);
         }
 
         // Información que se va a guardar en el token.

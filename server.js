@@ -56,6 +56,7 @@ app.get('/users/:idUser', getUser);
 app.put('/users/:idUser', authUser, manageProfile);
 
 // Obtener información sobre el usuario del token.
+
 app.get('/users', authUser, getOwnUser);
 
 /**

@@ -19,7 +19,7 @@ const insertUserQuery = async (name, email, biography, photoName, password) => {
         // ya está vinculado a otro usuario, en ese caso se lanza un error.
         if (users.length > 0) {
             throw generateError(
-                'Ya existe un usuario con ese email en la base de datos',
+                'There is already a user with that email in the database',
                 409
             );
         }

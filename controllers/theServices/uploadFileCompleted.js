@@ -12,7 +12,7 @@ const uploadFileCompleted = async (req, res, next) => {
         // Si el texto no existe o supera los 500 caracteres se lanza un error.
         if (!text || text.length > 500) {
             throw generateError(
-                'Falta el texto o la longitud supera los 500 caracteres',
+                'Text is missing or length exceeds 500 characters',
                 400
             );
         }
@@ -21,7 +21,7 @@ const uploadFileCompleted = async (req, res, next) => {
         let fileCompletedName;
 
         if (!req.files || Object.keys(req.files).length === 0) {
-            throw generateError('No se han subido archivos.', 400);
+            throw generateError('No files uploaded.', 400);
         }
 
         // Si existe el fichero se guardará.
