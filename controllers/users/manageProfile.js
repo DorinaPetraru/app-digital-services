@@ -67,8 +67,6 @@ const manageProfile = async (req, res, next) => {
             try {
                 // Eliminar photo antigua.
                 fs.unlink(uploadsDir + '/' + oldPhoto);
-
-                console.log('Archivo eliminado');
             } catch (err) {
                 console.error(err.message);
             }

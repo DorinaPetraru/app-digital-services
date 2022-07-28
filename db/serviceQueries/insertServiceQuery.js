@@ -7,7 +7,7 @@ const insertServiceQuery = async (
     fileName = ''
 ) => {
     let connection;
-    console.log(fileName);
+
     try {
         connection = await getConnection();
 
